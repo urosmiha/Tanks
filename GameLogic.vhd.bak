@@ -1,0 +1,113 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity GameLogic is
+     Port (clk, h_sync, v_sync 	: in std_logic;
+				random_number			: in std_logic_vector(9 downto 0);
+				mouse_col 				: in std_logic_vector(9 downto 0); 
+				mouse_leftClick 		: in std_logic;
+				collision				: out std_logic;
+				pTank_row, pTank_col : out std_logic_vector (9 downto 0); -- pTank is the player's tank
+				tank_row,tank_col 	: out std_logic_vector (9 downto 0); -- AI's tank
+				ball_row, ball_col 	: out std_logic_vector (9 downto 0));
+				
+end GameLogic;
+
+architecture Behavioral of GameLogic is
+-- Ball variables
+signal ball_size		: signed(9 downto 0) := to_signed(15,10);
+signal ball_col_vel 	: signed(9 downto 0);
+signal ball_row_vel 	: signed(9 downto 0);
+signal sBall_col 		: signed(9 downto 0);
+signal sBall_row 		: signed(9 downto 0);
+
+-- AI tank variables
+signal tank_width 	: signed(9 downto 0) := to_signed(50,10);
+signal s_tank_row 	: signed(9 downto 0) := to_signed(20,10);
+signal s_tank_col 	: signed(9 downto 0);
+signal tank_col_vel 	: signed(9 downto 0);
+--signal tank_row_vel : signed(9 downto 0);
+
+-- Player Tank variables
+signal s_pTank_col : signed (9 downto 0);
+signal s_pTank_row : signed (9 downto 0);
+
+-- Screen bounds and other variables
+signal screen_width 	: signed(9 downto 0) := to_signed(640,10) - to_signed(10,10); -- 10 pix vertical edges
+signal rightBounds 	: signed(9 downto 0) := to_signed(600,10);
+signal leftBounds 	: signed(9 downto 0) := to_signed(10,10);
+signal mouseClicked 	: std_logic := '0';
+signal s_collision		: std_logic := '0';
+
+begin
+-- Fixed row position of tanks
+tank_row <= std_logic_vector(to_signed(50,10));
+s_pTank_row <= to_signed(400,10);
+
+--============================ MOVE OBJECTS =========================================	
+	move_objects : process (v_sync)
+	begin
+		if(v_sync'event and v_sync = '1') then
+		
+			--************************* AI TANK ****************************************
+			-- Constantly move the tank within screen bounds
+			if ('0' & s_tank_col >= '0' & (to_signed(640,10) - tank_width)) then
+				tank_col_vel <= - to_signed(2,10);
+			elsif ('0' & s_tank_col <= '0' & to_signed(10,10)) then
+				tank_col_vel <= to_signed(2,10);
+			end if;
+			s_tank_col <= s_tank_col + tank_col_vel;
+			--**************************************************************************
+			
+			--************************ PLAYER TANK *************************************
+			-- Control player tank with mouse
+			pTank_row <= std_logic_vector(s_pTank_row);
+			pTank_col <= mouse_col;
+			--**************************************************************************
+			
+			--************************ BALL CONTROL ************************************
+			-- Ball follows player tank until it is shot
+			if((mouse_leftClick = '1') and (mouseClicked = '0')) then
+				mouseClicked <= '1';
+			end if;
+			
+			-- If ball is shot, move it up until it's off screen, then set it back on the tank
+			if (mouseClicked = '1') then
+				if(sBall_row < 0) then	-- If the ball goes out of screen: SUBSTRACT THE SIZE
+					sBall_row <= s_pTank_row;
+					sBall_col <= s_pTank_col;
+					mouseClicked <= '0';
+				else
+					sBall_row <= sBall_row - to_signed(5,10); -- Move ball upwards 
+				end if;
+			else
+				sBall_row <= s_pTank_row; -- Ball follows the tank
+				sBall_col <= signed(mouse_col) + to_signed(18,10);
+			end if;	
+			--**************************************************************************
+			
+			--******************* COLLISION (BALL AND AI TANK) *************************
+			-- Ball and tank must be intersecting
+			if ((sBall_row <= (s_tank_row + tank_width) and sBall_row >= s_tank_row) and
+			(sBall_col >= s_tank_col and (sBall_col - ball_size) <= (s_tank_col + tank_width))) then
+				s_collision <= '1';
+				
+				-- Randomise the column position. Ignore the MSB if it's out of bounds
+				if (signed(random_number) >= to_signed(640, 10) - tank_width) then
+					s_tank_col <= signed('0' & random_number(8 downto 0));
+				end if;
+			else
+				s_collision <= '0';
+			end if;
+			--**************************************************************************
+				
+		end if;
+		collision <= std_logic(s_collision);
+		tank_col <= std_logic_vector(s_tank_col);	
+		ball_col <= std_logic_vector(sBall_col);
+		ball_row <= std_logic_vector(sBall_row);	
+	end process move_objects;
+	
+--===================================================================================
+end Behavioral;

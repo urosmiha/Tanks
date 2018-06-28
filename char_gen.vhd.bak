@@ -1,0 +1,26 @@
+library IEEE;
+use  IEEE.STD_LOGIC_1164.all;
+use IEEE.numeric_std.all;
+
+entity char_gen is
+port( pixel_row, pixel_col: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+		rom_mux_in		:	IN STD_LOGIC;
+		char_address : OUT std_logic_vector(5 downto 0);
+		font_row, font_col	:	OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+		rom_mux_out		:	OUT STD_LOGIC);
+end entity;
+
+architecture beh of char_gen is
+begin
+	--																	64										128
+	char_address <= "000001" when ((pixel_row > "0000100000") and (pixel_row < "0001000000")) else "000001" when ((pixel_col < "0000010000") and (pixel_row < "0000010000"))  else "000010" when ((pixel_col < "0000100000") and (pixel_row < "0000010000"))  else "000011" when ((pixel_col < "0000110000") and (pixel_row < "0000010000"))  else "000100" when ((pixel_col < "0001000000") and (pixel_row < "0000010000"))  else "000000";
+	rom_mux_out <= rom_mux_in when ((pixel_row > "0011000000") and (pixel_row < "0100000000")) else rom_mux_in when (((pixel_col < "0000010000") or (pixel_col < "0000100000") or (pixel_col < "0000110000") or (pixel_col < "0001000000")) and (pixel_row < "0000010000")) else '0';
+
+--	char_address <= "000001" when ((pixel_col < "0000010000") and (pixel_row < "0000010000"))  else "000010" when ((pixel_col < "0000100000") and (pixel_row < "0000010000"))  else "000011" when ((pixel_col < "0000110000") and (pixel_row < "0000010000"))  else "000100" when ((pixel_col < "0001000000") and (pixel_row < "0000010000"))  else "000000";
+--		
+--	rom_mux_out <= rom_mux_in when (((pixel_col < "0000010000") or (pixel_col < "0000100000") or (pixel_col < "0000110000") or (pixel_col < "0001000000")) and (pixel_row < "0000010000")) else '0';
+	
+	font_row <= pixel_row(5 downto 3) when ((pixel_row > "0011000000") and (pixel_row < "0100000000")) else pixel_row(3 downto 1);
+	font_col <= pixel_col(5 downto 3) when ((pixel_row > "0011000000") and (pixel_row < "0100000000")) else pixel_row(3 downto 1);
+
+end architecture;

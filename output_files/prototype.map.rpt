@@ -1,0 +1,688 @@
+Analysis & Synthesis report for prototype
+Tue May 30 15:03:48 2017
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |prototype|FSM:inst9|lvl
+ 10. State Machine - |prototype|MOUSE:inst7|mouse_state
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated
+ 16. Parameter Settings for User Entity Instance: char_rom:inst5|altsyncram:altsyncram_component
+ 17. altsyncram Parameter Settings by Entity Instance
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue May 30 15:03:47 2017      ;
+; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
+; Revision Name                      ; prototype                                  ;
+; Top-level Entity Name              ; prototype                                  ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 2,482                                      ;
+;     Total combinational functions  ; 2,398                                      ;
+;     Dedicated logic registers      ; 370                                        ;
+; Total registers                    ; 370                                        ;
+; Total pins                         ; 34                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 4,096                                      ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; prototype          ; prototype          ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                        ;
++----------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                          ; Library ;
++----------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------+---------+
+; counter.vhd                      ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/counter.vhd            ;         ;
+; countdown.vhd                    ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/countdown.vhd          ;         ;
+; Clock_Divider_1Hz.vhd            ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/Clock_Divider_1Hz.vhd  ;         ;
+; BCD_counter.vhd                  ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/BCD_counter.vhd        ;         ;
+; FSM.vhd                          ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/FSM.vhd                ;         ;
+; char_gen.vhd                     ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/char_gen.vhd           ;         ;
+; random_num.vhd                   ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/random_num.vhd         ;         ;
+; prototype.bdf                    ; yes             ; User Block Diagram/Schematic File      ; C:/Users/Uros/Desktop/Final VHDL Project Files/prototype.bdf          ;         ;
+; mouse.VHD                        ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/mouse.VHD              ;         ;
+; char_rom.vhd                     ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/char_rom.vhd           ;         ;
+; Tank.vhd                         ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/Tank.vhd               ;         ;
+; ball.vhd                         ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/ball.vhd               ;         ;
+; vga_sync.vhd                     ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/vga_sync.vhd           ;         ;
+; Clock_Divider.vhd                ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/Clock_Divider.vhd      ;         ;
+; GameLogic.vhd                    ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/GameLogic.vhd          ;         ;
+; score_count.vhd                  ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/score_count.vhd        ;         ;
+; seven_seg.vhd                    ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/seven_seg.vhd          ;         ;
+; startCountdown.vhd               ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/startCountdown.vhd     ;         ;
+; rgbMix.vhd                       ; yes             ; User VHDL File                         ; C:/Users/Uros/Desktop/Final VHDL Project Files/rgbMix.vhd             ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/altsyncram.tdf         ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/stratix_ram_block.inc  ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/lpm_mux.inc            ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/lpm_decode.inc         ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/aglobal130.inc         ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/a_rdenreg.inc          ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/altrom.inc             ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/altram.inc             ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/altdpram.inc           ;         ;
+; db/altsyncram_kt91.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/Uros/Desktop/Final VHDL Project Files/db/altsyncram_kt91.tdf ;         ;
+; tcgrom.mif                       ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Uros/Desktop/Final VHDL Project Files/tcgrom.mif             ;         ;
++----------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                ;
++---------------------------------------------+------------------------------+
+; Resource                                    ; Usage                        ;
++---------------------------------------------+------------------------------+
+; Estimated Total logic elements              ; 2,482                        ;
+;                                             ;                              ;
+; Total combinational functions               ; 2398                         ;
+; Logic element usage by number of LUT inputs ;                              ;
+;     -- 4 input functions                    ; 848                          ;
+;     -- 3 input functions                    ; 695                          ;
+;     -- <=2 input functions                  ; 855                          ;
+;                                             ;                              ;
+; Logic elements by mode                      ;                              ;
+;     -- normal mode                          ; 1254                         ;
+;     -- arithmetic mode                      ; 1144                         ;
+;                                             ;                              ;
+; Total registers                             ; 370                          ;
+;     -- Dedicated logic registers            ; 370                          ;
+;     -- I/O registers                        ; 0                            ;
+;                                             ;                              ;
+; I/O pins                                    ; 34                           ;
+; Total memory bits                           ; 4096                         ;
+; Embedded Multiplier 9-bit elements          ; 0                            ;
+; Maximum fan-out node                        ; VGA_SYNC:inst1|vert_sync_out ;
+; Maximum fan-out                             ; 128                          ;
+; Total fan-out                               ; 8300                         ;
+; Average fan-out                             ; 2.92                         ;
++---------------------------------------------+------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                             ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                      ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
+; |prototype                                ; 2398 (5)          ; 370 (0)      ; 4096        ; 0            ; 0       ; 0         ; 34   ; 0            ; |prototype                                                                               ;              ;
+;    |Clock_Divider:inst|                   ; 46 (46)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|Clock_Divider:inst                                                            ;              ;
+;    |Clock_Divider_1Hz:inst10|             ; 57 (57)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|Clock_Divider_1Hz:inst10                                                      ;              ;
+;    |FSM:inst9|                            ; 75 (75)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|FSM:inst9                                                                     ;              ;
+;    |GameLogic:inst3|                      ; 358 (358)         ; 117 (117)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|GameLogic:inst3                                                               ;              ;
+;    |MOUSE:inst7|                          ; 83 (83)           ; 90 (90)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|MOUSE:inst7                                                                   ;              ;
+;    |Tank:inst12|                          ; 34 (34)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|Tank:inst12                                                                   ;              ;
+;    |Tank:inst4|                           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|Tank:inst4                                                                    ;              ;
+;    |Tank:inst8|                           ; 33 (33)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|Tank:inst8                                                                    ;              ;
+;    |VGA_SYNC:inst1|                       ; 63 (63)           ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|VGA_SYNC:inst1                                                                ;              ;
+;    |ball:inst14|                          ; 348 (348)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|ball:inst14                                                                   ;              ;
+;    |ball:inst21|                          ; 349 (349)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|ball:inst21                                                                   ;              ;
+;    |ball:inst2|                           ; 348 (348)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|ball:inst2                                                                    ;              ;
+;    |char_gen:inst15|                      ; 481 (481)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|char_gen:inst15                                                               ;              ;
+;    |char_rom:inst5|                       ; 4 (4)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|char_rom:inst5                                                                ;              ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|char_rom:inst5|altsyncram:altsyncram_component                                ;              ;
+;          |altsyncram_kt91:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ;              ;
+;    |counter:inst11|                       ; 9 (0)             ; 17 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|counter:inst11                                                                ;              ;
+;       |BCD_counter:b2v_inst1|             ; 4 (4)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|counter:inst11|BCD_counter:b2v_inst1                                          ;              ;
+;       |BCD_counter:b2v_inst|              ; 5 (5)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|counter:inst11|BCD_counter:b2v_inst                                           ;              ;
+;       |countdown:b2v_inst2|               ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|counter:inst11|countdown:b2v_inst2                                            ;              ;
+;    |random_num:inst6|                     ; 2 (2)             ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|random_num:inst6                                                              ;              ;
+;    |rgbMix:inst20|                        ; 22 (22)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|rgbMix:inst20                                                                 ;              ;
+;    |score_count:inst16|                   ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|score_count:inst16                                                            ;              ;
+;    |seven_seg:inst17|                     ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|seven_seg:inst17                                                              ;              ;
+;    |seven_seg:inst18|                     ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|seven_seg:inst18                                                              ;              ;
+;    |startCountdown:inst19|                ; 5 (5)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |prototype|startCountdown:inst19                                                         ;              ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                       ;
++------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
+; Name                                                                                     ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF        ;
++------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
+; char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 512          ; 8            ; --           ; --           ; 4096 ; tcgrom.mif ;
++------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |prototype|FSM:inst9|lvl                                          ;
++--------------+--------------+--------+--------+--------+--------+--------+--------+
+; Name         ; lvl.finished ; lvl.l6 ; lvl.l5 ; lvl.l4 ; lvl.l3 ; lvl.l2 ; lvl.l1 ;
++--------------+--------------+--------+--------+--------+--------+--------+--------+
+; lvl.l1       ; 0            ; 0      ; 0      ; 0      ; 0      ; 0      ; 0      ;
+; lvl.l2       ; 0            ; 0      ; 0      ; 0      ; 0      ; 1      ; 1      ;
+; lvl.l3       ; 0            ; 0      ; 0      ; 0      ; 1      ; 0      ; 1      ;
+; lvl.l4       ; 0            ; 0      ; 0      ; 1      ; 0      ; 0      ; 1      ;
+; lvl.l5       ; 0            ; 0      ; 1      ; 0      ; 0      ; 0      ; 1      ;
+; lvl.l6       ; 0            ; 1      ; 0      ; 0      ; 0      ; 0      ; 1      ;
+; lvl.finished ; 1            ; 0      ; 0      ; 0      ; 0      ; 0      ; 1      ;
++--------------+--------------+--------+--------+--------+--------+--------+--------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |prototype|MOUSE:inst7|mouse_state                                                                                                                                                      ;
++-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
+; Name                          ; mouse_state.INPUT_PACKETS ; mouse_state.WAIT_CMD_ACK ; mouse_state.WAIT_OUTPUT_READY ; mouse_state.LOAD_COMMAND2 ; mouse_state.LOAD_COMMAND ; mouse_state.INHIBIT_TRANS ;
++-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
+; mouse_state.INHIBIT_TRANS     ; 0                         ; 0                        ; 0                             ; 0                         ; 0                        ; 0                         ;
+; mouse_state.LOAD_COMMAND      ; 0                         ; 0                        ; 0                             ; 0                         ; 1                        ; 1                         ;
+; mouse_state.LOAD_COMMAND2     ; 0                         ; 0                        ; 0                             ; 1                         ; 0                        ; 1                         ;
+; mouse_state.WAIT_OUTPUT_READY ; 0                         ; 0                        ; 1                             ; 0                         ; 0                        ; 1                         ;
+; mouse_state.WAIT_CMD_ACK      ; 0                         ; 1                        ; 0                             ; 0                         ; 0                        ; 1                         ;
+; mouse_state.INPUT_PACKETS     ; 1                         ; 0                        ; 0                             ; 0                         ; 0                        ; 1                         ;
++-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++----------------------------------------+----------------------------------------------+
+; Register name                          ; Reason for Removal                           ;
++----------------------------------------+----------------------------------------------+
+; MOUSE:inst7|CHAROUT[4..7]              ; Stuck at VCC due to stuck port data_in       ;
+; MOUSE:inst7|CHAROUT[3]                 ; Stuck at GND due to stuck port data_in       ;
+; MOUSE:inst7|CHAROUT[2]                 ; Stuck at VCC due to stuck port data_in       ;
+; MOUSE:inst7|CHAROUT[0,1]               ; Stuck at GND due to stuck port data_in       ;
+; MOUSE:inst7|SHIFTOUT[10]               ; Stuck at VCC due to stuck port data_in       ;
+; FSM:inst9|sPause                       ; Merged with FSM:inst9|ResetGame              ;
+; FSM:inst9|sResetCountdown              ; Merged with FSM:inst9|ResetGame              ;
+; FSM:inst9|sResetScore                  ; Merged with FSM:inst9|ResetGame              ;
+; GameLogic:inst3|tank2_col_vel[4..9]    ; Merged with GameLogic:inst3|tank2_col_vel[3] ;
+; GameLogic:inst3|tank_col_vel[4..9]     ; Merged with GameLogic:inst3|tank_col_vel[3]  ;
+; VGA_SYNC:inst1|pixel_row[9]            ; Stuck at GND due to stuck port data_in       ;
+; Total Number of Removed Registers = 25 ;                                              ;
++----------------------------------------+----------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 370   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 38    ;
+; Number of registers using Asynchronous Clear ; 35    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 222   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------+
+; Inverted Register Statistics                               ;
++--------------------------------------------------+---------+
+; Inverted Register                                ; Fan out ;
++--------------------------------------------------+---------+
+; GameLogic:inst3|s_tank_row[4]                    ; 6       ;
+; GameLogic:inst3|s_tank_row[3]                    ; 7       ;
+; GameLogic:inst3|s_tank_row[2]                    ; 7       ;
+; GameLogic:inst3|s_tank_row[1]                    ; 8       ;
+; startCountdown:inst19|s_out[0]                   ; 10      ;
+; startCountdown:inst19|s_out[1]                   ; 10      ;
+; counter:inst11|countdown:b2v_inst2|s_seg_ones[3] ; 6       ;
+; counter:inst11|countdown:b2v_inst2|s_seg_ones[0] ; 6       ;
+; GameLogic:inst3|AI_ball_flag                     ; 2       ;
+; counter:inst11|countdown:b2v_inst2|s_seg_tens[0] ; 3       ;
+; counter:inst11|countdown:b2v_inst2|s_seg_tens[3] ; 3       ;
+; GameLogic:inst3|AI_ball2_flag                    ; 12      ;
+; GameLogic:inst3|random_active                    ; 2       ;
+; Clock_Divider:inst|count[0]                      ; 2       ;
+; startCountdown:inst19|sEnable                    ; 3       ;
+; counter:inst11|BCD_counter:b2v_inst|temp[3]      ; 5       ;
+; counter:inst11|BCD_counter:b2v_inst|temp[0]      ; 6       ;
+; counter:inst11|BCD_counter:b2v_inst1|temp[0]     ; 5       ;
+; counter:inst11|BCD_counter:b2v_inst1|temp[3]     ; 4       ;
+; Clock_Divider_1Hz:inst10|count[0]                ; 2       ;
+; MOUSE:inst7|send_char                            ; 3       ;
+; MOUSE:inst7|SHIFTOUT[3]                          ; 1       ;
+; MOUSE:inst7|SHIFTOUT[5]                          ; 1       ;
+; MOUSE:inst7|SHIFTOUT[6]                          ; 1       ;
+; MOUSE:inst7|SHIFTOUT[7]                          ; 1       ;
+; MOUSE:inst7|SHIFTOUT[8]                          ; 1       ;
+; Total number of inverted registers = 26          ;         ;
++--------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |prototype|GameLogic:inst3|AI_sBall2_row[8] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |prototype|GameLogic:inst3|AI_sBall_row[2]  ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |prototype|VGA_SYNC:inst1|v_count[2]        ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |prototype|MOUSE:inst7|new_cursor_column[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |prototype|GameLogic:inst3|tank2_col_vel[1] ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; Yes        ; |prototype|GameLogic:inst3|tankSpeed[1]     ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |prototype|MOUSE:inst7|cursor_column[9]     ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |prototype|GameLogic:inst3|sBall_col[8]     ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |prototype|GameLogic:inst3|sBall_row[1]     ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |prototype|GameLogic:inst3|tank_col_vel[1]  ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |prototype|GameLogic:inst3|s_tank_col[7]    ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |prototype|GameLogic:inst3|s_tank_row[9]    ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 10 LEs               ; 4 LEs                  ; Yes        ; |prototype|FSM:inst9|sGameFinished[1]       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |prototype|GameLogic:inst3|s_tank_row[4]    ;
+; 124:1              ; 2 bits    ; 164 LEs       ; 164 LEs              ; 0 LEs                  ; No         ; |prototype|char_gen:inst15|char_address[0]  ;
+; 126:1              ; 3 bits    ; 252 LEs       ; 252 LEs              ; 0 LEs                  ; No         ; |prototype|char_gen:inst15|char_address[2]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Source assignments for char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------+
+; Assignment                      ; Value              ; From ; To                                     ;
++---------------------------------+--------------------+------+----------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                      ;
++---------------------------------+--------------------+------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: char_rom:inst5|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------+
+; Parameter Name                     ; Value                ; Type                            ;
++------------------------------------+----------------------+---------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                         ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                    ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                  ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                         ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                         ;
+; WIDTH_A                            ; 8                    ; Signed Integer                  ;
+; WIDTHAD_A                          ; 9                    ; Signed Integer                  ;
+; NUMWORDS_A                         ; 512                  ; Signed Integer                  ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                         ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                         ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                         ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                         ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                         ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                         ;
+; WIDTH_B                            ; 1                    ; Untyped                         ;
+; WIDTHAD_B                          ; 1                    ; Untyped                         ;
+; NUMWORDS_B                         ; 1                    ; Untyped                         ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                         ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                         ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                         ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                         ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                         ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                         ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                         ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                         ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                         ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                  ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                         ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                         ;
+; BYTE_SIZE                          ; 8                    ; Untyped                         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
+; INIT_FILE                          ; tcgrom.mif           ; Untyped                         ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                         ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                         ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                         ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                         ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                         ;
+; DEVICE_FAMILY                      ; Cyclone III          ; Untyped                         ;
+; CBXI_PARAMETER                     ; altsyncram_kt91      ; Untyped                         ;
++------------------------------------+----------------------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                           ;
++-------------------------------------------+------------------------------------------------+
+; Name                                      ; Value                                          ;
++-------------------------------------------+------------------------------------------------+
+; Number of entity instances                ; 1                                              ;
+; Entity Instance                           ; char_rom:inst5|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                            ;
+;     -- WIDTH_A                            ; 8                                              ;
+;     -- NUMWORDS_A                         ; 512                                            ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                   ;
+;     -- WIDTH_B                            ; 1                                              ;
+;     -- NUMWORDS_B                         ; 1                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                         ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                   ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                           ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                      ;
++-------------------------------------------+------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+    Info: Processing started: Tue May 30 15:03:37 2017
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off prototype -c prototype
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file counter.vhd
+    Info (12022): Found design unit 1: counter-bdf_type
+    Info (12023): Found entity 1: counter
+Info (12021): Found 2 design units, including 1 entities, in source file countdown.vhd
+    Info (12022): Found design unit 1: countdown-beh
+    Info (12023): Found entity 1: countdown
+Info (12021): Found 2 design units, including 1 entities, in source file clock_divider_1hz.vhd
+    Info (12022): Found design unit 1: Clock_Divider_1Hz-bhv
+    Info (12023): Found entity 1: Clock_Divider_1Hz
+Info (12021): Found 2 design units, including 1 entities, in source file bcd_counter.vhd
+    Info (12022): Found design unit 1: BCD_counter-beh
+    Info (12023): Found entity 1: BCD_counter
+Info (12021): Found 2 design units, including 1 entities, in source file fsm.vhd
+    Info (12022): Found design unit 1: FSM-beh
+    Info (12023): Found entity 1: FSM
+Info (12021): Found 2 design units, including 1 entities, in source file char_gen.vhd
+    Info (12022): Found design unit 1: char_gen-beh
+    Info (12023): Found entity 1: char_gen
+Info (12021): Found 2 design units, including 1 entities, in source file random_num.vhd
+    Info (12022): Found design unit 1: random_num-bdf_type
+    Info (12023): Found entity 1: random_num
+Info (12021): Found 1 design units, including 1 entities, in source file prototype.bdf
+    Info (12023): Found entity 1: prototype
+Info (12021): Found 2 design units, including 1 entities, in source file mouse.vhd
+    Info (12022): Found design unit 1: MOUSE-behavior
+    Info (12023): Found entity 1: MOUSE
+Info (12021): Found 2 design units, including 1 entities, in source file char_rom.vhd
+    Info (12022): Found design unit 1: char_rom-SYN
+    Info (12023): Found entity 1: char_rom
+Info (12021): Found 2 design units, including 1 entities, in source file tank.vhd
+    Info (12022): Found design unit 1: Tank-beh
+    Info (12023): Found entity 1: Tank
+Info (12021): Found 2 design units, including 1 entities, in source file ball.vhd
+    Info (12022): Found design unit 1: ball-beh
+    Info (12023): Found entity 1: ball
+Info (12021): Found 2 design units, including 1 entities, in source file vga_sync.vhd
+    Info (12022): Found design unit 1: VGA_SYNC-a
+    Info (12023): Found entity 1: VGA_SYNC
+Info (12021): Found 2 design units, including 1 entities, in source file clock_divider.vhd
+    Info (12022): Found design unit 1: Clock_Divider-bhv
+    Info (12023): Found entity 1: Clock_Divider
+Info (12021): Found 2 design units, including 1 entities, in source file gamelogic.vhd
+    Info (12022): Found design unit 1: GameLogic-Behavioral
+    Info (12023): Found entity 1: GameLogic
+Info (12021): Found 2 design units, including 1 entities, in source file score_count.vhd
+    Info (12022): Found design unit 1: score_count-beh
+    Info (12023): Found entity 1: score_count
+Info (12021): Found 2 design units, including 1 entities, in source file seven_seg.vhd
+    Info (12022): Found design unit 1: seven_seg-beh
+    Info (12023): Found entity 1: seven_seg
+Info (12021): Found 2 design units, including 1 entities, in source file startcountdown.vhd
+    Info (12022): Found design unit 1: startCountdown-beh
+    Info (12023): Found entity 1: startCountdown
+Info (12021): Found 2 design units, including 1 entities, in source file rgbmix.vhd
+    Info (12022): Found design unit 1: rgbMix-beh
+    Info (12023): Found entity 1: rgbMix
+Info (12127): Elaborating entity "prototype" for the top level hierarchy
+Warning (275083): Bus "rgbAIBall2[2..0]" found using same base name as "rgbAIBall", which might lead to a name conflict.
+Warning (275080): Converted elements in bus name "rgbAIBall" using legacy naming rules. Make any assignments on the new names, not on the original names.
+    Warning (275081): Converted element name(s) from "rgbAIBall[2..0]" to "rgbAIBall2..0"
+Warning (275080): Converted elements in bus name "rgbAIBall2" using legacy naming rules. Make any assignments on the new names, not on the original names.
+    Warning (275081): Converted element name(s) from "rgbAIBall2[2..0]" to "rgbAIBall22..0"
+Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst1"
+Info (12128): Elaborating entity "Clock_Divider" for hierarchy "Clock_Divider:inst"
+Warning (10492): VHDL Process Statement warning at Clock_Divider.vhd(27): signal "tmp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "rgbMix" for hierarchy "rgbMix:inst20"
+Info (12128): Elaborating entity "Tank" for hierarchy "Tank:inst12"
+Warning (10540): VHDL Signal Declaration warning at Tank.vhd(17): used explicit default value for signal "tank_width" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at Tank.vhd(18): used explicit default value for signal "tank_height" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at Tank.vhd(19): used explicit default value for signal "sTank_colEnd" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at Tank.vhd(20): used explicit default value for signal "sTank_rowEnd" because signal was never assigned a value
+Info (12128): Elaborating entity "GameLogic" for hierarchy "GameLogic:inst3"
+Warning (10540): VHDL Signal Declaration warning at GameLogic.vhd(34): used explicit default value for signal "ball_size" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at GameLogic.vhd(57): used explicit default value for signal "tank_width" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at GameLogic.vhd(65): used explicit default value for signal "s_tank2_row" because signal was never assigned a value
+Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:inst7"
+Warning (10036): Verilog HDL or VHDL warning at mouse.VHD(22): object "CHARIN" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at mouse.VHD(148): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at mouse.VHD(152): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at mouse.VHD(153): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at mouse.VHD(154): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "FSM" for hierarchy "FSM:inst9"
+Warning (10540): VHDL Signal Declaration warning at FSM.vhd(47): used explicit default value for signal "sEnableCounter" because signal was never assigned a value
+Info (12128): Elaborating entity "Clock_Divider_1Hz" for hierarchy "Clock_Divider_1Hz:inst10"
+Warning (10492): VHDL Process Statement warning at Clock_Divider_1Hz.vhd(27): signal "tmp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "startCountdown" for hierarchy "startCountdown:inst19"
+Info (12128): Elaborating entity "counter" for hierarchy "counter:inst11"
+Info (12128): Elaborating entity "BCD_counter" for hierarchy "counter:inst11|BCD_counter:b2v_inst"
+Info (12128): Elaborating entity "countdown" for hierarchy "counter:inst11|countdown:b2v_inst2"
+Info (12128): Elaborating entity "score_count" for hierarchy "score_count:inst16"
+Info (12128): Elaborating entity "random_num" for hierarchy "random_num:inst6"
+Warning (10812): VHDL warning at random_num.vhd(44): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(56): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(75): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(87): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(99): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(111): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(123): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(135): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(147): sensitivity list already contains high
+Warning (10812): VHDL warning at random_num.vhd(159): sensitivity list already contains high
+Info (12128): Elaborating entity "ball" for hierarchy "ball:inst2"
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(15): used explicit default value for signal "ball_width" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(16): used explicit default value for signal "ball_height" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(18): used explicit default value for signal "sCol_End" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(19): used explicit default value for signal "sRow_End" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(25): used explicit default value for signal "Col_1" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(26): used explicit default value for signal "Col_2" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(27): used explicit default value for signal "Col_3" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(28): used explicit default value for signal "Col_4" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(30): used explicit default value for signal "Col_6" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(31): used explicit default value for signal "Col_7" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(32): used explicit default value for signal "Col_8" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(33): used explicit default value for signal "Col_9" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(36): used explicit default value for signal "Row_0" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(37): used explicit default value for signal "Row_1" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(38): used explicit default value for signal "Row_2" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(39): used explicit default value for signal "Row_3" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(40): used explicit default value for signal "Row_4" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(41): used explicit default value for signal "Row_5" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(42): used explicit default value for signal "Row_6" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(43): used explicit default value for signal "Row_7" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(44): used explicit default value for signal "Row_8" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(45): used explicit default value for signal "Row_9" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ball.vhd(46): used explicit default value for signal "Row_10" because signal was never assigned a value
+Info (12128): Elaborating entity "char_gen" for hierarchy "char_gen:inst15"
+Warning (10620): VHDL warning at char_gen.vhd(130): comparison between unequal length operands always returns FALSE
+Info (12128): Elaborating entity "char_rom" for hierarchy "char_rom:inst5"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "char_rom:inst5|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "char_rom:inst5|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "char_rom:inst5|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "tcgrom.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone III"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "512"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "widthad_a" = "9"
+    Info (12134): Parameter "width_a" = "8"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kt91.tdf
+    Info (12023): Found entity 1: altsyncram_kt91
+Info (12128): Elaborating entity "altsyncram_kt91" for hierarchy "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated"
+Info (12128): Elaborating entity "seven_seg" for hierarchy "seven_seg:inst17"
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "score_ones[7]" is stuck at VCC
+    Warning (13410): Pin "score_tens[7]" is stuck at VCC
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register startCountdown:inst19|s_out[0] will power up to High
+    Critical Warning (18010): Register startCountdown:inst19|s_out[1] will power up to High
+    Critical Warning (18010): Register startCountdown:inst19|sEnable will power up to High
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2530 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 21 output pins
+    Info (21060): Implemented 2 bidirectional pins
+    Info (21061): Implemented 2488 logic cells
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 62 warnings
+    Info: Peak virtual memory: 496 megabytes
+    Info: Processing ended: Tue May 30 15:03:48 2017
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:11
+
+

@@ -1,0 +1,31 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity score_count is
+	port (collision	: in std_logic;
+			score_ones	: out std_logic_vector(3 downto 0);
+			score_tens	: out std_logic_vector(3 downto 0));
+end entity score_count;
+
+architecture beh of score_count is
+signal s_ones	: std_logic_vector(3 downto 0) := "0000";
+signal s_tens	: std_logic_vector(3 downto 0) := "0000";
+begin
+	process(collision)
+	begin
+		if (collision'event and collision = '1') then
+			if (s_ones = "1001") then
+				s_tens <= s_tens + '1';
+				s_ones <= "0000";
+			else
+				s_ones <= s_ones + '1';
+			end if;
+		end if;
+	end process;
+	
+	score_ones <= s_ones;
+	score_tens <= s_tens;
+	
+end architecture;					

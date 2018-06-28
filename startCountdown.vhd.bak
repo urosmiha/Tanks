@@ -1,0 +1,24 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all; 
+
+entity startCountdown is
+port(clk, enable, reset : IN std_logic;
+		timer_out : OUT std_logic_vector(1 downto 0));
+end entity;
+
+architecture beh of entity is
+begin
+	process(clk, reset)
+		variable s_out : std_logic_vector(1 downto 0) := "00";
+	begin
+		if (reset = '1') then
+			s_out := "11"; -- 3
+		elsif(rising_edge(clk)) then
+			if(s_out > "00") then
+				s_out := s_out + '1';
+			end if;
+		end if;
+		timer_out(1 downto 0) <= s_out(1 downto 0);
+	end process;
+
+end architecture;

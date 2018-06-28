@@ -1,0 +1,25 @@
+library IEEE;
+use  IEEE.STD_LOGIC_1164.all;
+use IEEE.numeric_std.all;
+
+entity Tank is
+port( tank_row, tank_col 	: IN std_logic_vector(9 downto 0);
+		vga_col, vga_row 		: IN std_logic_vector(9 downto 0);
+		r,g,b 					: OUT std_logic);
+end Tank;
+
+architecture beh of Tank is
+	signal tank_width 	: std_logic_vector(9 downto 0) := std_logic_vector(to_unsigned(50,10));
+	signal tank_height 	: std_logic_vector(9 downto 0) := std_logic_vector(to_unsigned(50,10));
+	signal sTank_colEnd 	: std_logic_vector(9 downto 0) := std_logic_vector(unsigned(tank_col) + unsigned(tank_width));
+	signal sTank_rowEnd 	: std_logic_vector(9 downto 0) := std_logic_vector(unsigned(tank_row) + unsigned(tank_height));
+	signal Tank_On 		: std_logic := '0';
+
+begin
+	Tank_On <= '1' when ((vga_col >= tank_col) and (vga_col <= sTank_colEnd) and (vga_row >= tank_row) and (vga_row <= sTank_rowEnd)) else '0';
+
+	r <= '0';
+	g <= '0';
+	b <= Tank_On;
+
+end architecture;
